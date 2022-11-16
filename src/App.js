@@ -1,12 +1,20 @@
-import React from "react";
+import React from 'react';
+import DecreaseButton from './components/DecreaseButton';
+import Display from './components/Display';
+import IncreaseButton from './components/IncreaseButton';
 
 function App() {
+  const [count, setCount] = React.useState(0);
+
+  const increase = () => setCount((prevValue) => prevValue + 1);
+  const decrease = () => setCount((prevValue) => (prevValue > 1 ? prevValue - 1 : 0));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hello</h1>
-      </header>
-    </div>
+    <>
+      <Display count={count} />
+      <DecreaseButton decrease={decrease} />
+      <IncreaseButton increase={increase} />
+    </>
   );
 }
 
